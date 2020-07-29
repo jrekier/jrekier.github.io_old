@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+title: test
+author: jerem.
+---
+
+<ul>
+{%- for post in collections.reviews | reverse -%}
+  <li>{{ post.data.title }}</li>
+{%- endfor -%}
+</ul>

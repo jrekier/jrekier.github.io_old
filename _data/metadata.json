@@ -1,0 +1,17 @@
+{
+  "title": "Globally Warm",
+  "url": "https://globallywarm.com",
+  "domain": "globallywarm.com",
+  "description": "A personal page",
+  "feed": {
+    "subtitle": "globallywarm.com — Observations, opinions, geekery.",
+    "filename": "feed.xml",
+    "path": "/feed.xml",
+    "url": "https://globallywarm.com/feed.xml",
+    "id": "https://globallywarm.com/"
+  },
+  "author": {
+    "name": "Jeremy Rekier",
+    "email": "jrekier@gmail.com"
+  }
+}

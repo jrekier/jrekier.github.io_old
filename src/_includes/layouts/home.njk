@@ -1,0 +1,108 @@
+---
+title: Home
+layout: layouts/base.njk
+pagination:
+  data: collections.posts
+  size: 5
+  alias: posts
+permalink: "{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus: 1 }}{% endif %}/index.html"
+---
+
+{# Logo title and navigation #}
+<header class="overflow-hidden bg-white z-50">
+  <div class="px-6 lg:px-12 md:flex items-center">
+    <div class="w-full flex flex-col items-center relative z-10">
+      <a href="/" class="flex py-10 items-center justify-center group">
+        <img class="h-20 lg:h-24 group-hover:shadow-xl rounded-full" src="/images/icons/geology.svg" alt="Logo"/>
+        <p class="px-4 py-2 font-serif text-4xl lg:text-5xl group-hover:text-red-700">Globally Warm</p>
+      </a>
+    </div>
+    <nav id="navbar" class="h-16 w-full bg-transparent flex justify-center items-center px-4 md:pt-2">
+      <div class="px-4 py-2 flex text-lg lg:text-2xl text-center border-t border-b">
+        {% for item in navigation %}
+        <a href="{{ item.url }}"class="inline-block px-2 py-1 font-serif hover:text-red-700 mt-0 ml-2">{{ item.label }}</a>
+        {% endfor %}
+      </div>
+    </nav>
+  </div>
+</header>
+
+{% include "banner.njk" %}
+
+{# few latest publications #}
+<div class="container mx-auto flex flex-wrap py-12">
+  <section class="w-full md:w-4/6 body-font overflow-hidden flex flex-col px-3 relative">
+    <div class="container px-5 mx-auto">
+        <p class="font-serif font-bold text-xl border-b border-gray-500 mb-4 uppercase">Latest Blog Posts</p>
+        {# <p class="font-serif font-bold text-xl mb-6 uppercase">Latest articles:</p> #}
+        {%- for post in posts -%}
+          <article class="mb-8">
+            <a href="{{ post.url }}">           
+              {# <div class="mb-4 pb-2 text-black rounded-lg group hover:bg-gray-100"> #}
+              <div class="mb-4 pb-2 text-black rounded-lg group">
+                {# <!-- Image -->
+                {% if post.data.featured_image %}
+                <div class="rounded-t-lg h-48 overflow-hidden">
+                  <img src="{{ post.data.featured_image }}" class="h-48 w-full object-cover group-hover:opacity-75">
+                </div>
+                {% endif %} #}
+                <!-- Title -->
+                <p class="px-1 pt-2 font-serif group-hover:text-red-700 text-xl md:text-2xl uppercase">
+                  {{ post.data.title }}
+                </p>
+                <!-- description -->
+                <p class="px-1 text-gray-700 leading-normal mb-2">
+                  {{post.data.description}}
+                </p>
+                <div class="px-1 mb-2 text-sm text-gray-700">
+                  by <a href="#" class="text-gray-700 hover:text-red-700">{{post.data.author}}</a> on {{ post.date | readableDate }}
+                  <span class="font-bold mx-1"> | </span>
+                  <a href="#" class="text-gray-700 hover:text-red-700">{{post.data.category}}</a>
+                  <span class="font-bold mx-1"> | </span>
+                  {% for tag in post.data.tags %}
+                  <a href="/tags/{{tag}}"><span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 hover:text-red-400 mr-2">#{{tag}}</span></a>
+                  {% endfor %}
+                </div>
+              </div>
+            </a>
+          </article>
+        {%- endfor -%}
+    </div>
+    {# <div class="flex justify-between text-xs">
+      {% if pagination.href.previous %}<a href="{{ pagination.href.previous }}"><span class="bg-black text-white no-underline py-2 px-3 rounded">Previous</span></a>{%else%}<span class="bg-black text-white no-underline py-2 px-3 rounded">Previous</span>{%endif%}
+      {% if pagination.href.next %}<a href="{{ pagination.href.next }}"><span class="bg-black text-white no-underline py-2 px-3 rounded">Next</span></a>{%else%}<span class="bg-black text-white no-underline py-2 px-3 rounded">Next</span>{%endif%}
+    </div> #}
+    <div class="flex items-sart justify-between text-xs">
+      {% if pagination.href.previous %}<a href="{{ pagination.href.previous }}" class="bg-gray-900 text-gray-200 hover:text-red-700 no-underline py-2 px-3 rounded">Newer</a>{%else%}<span></span>{%endif%}
+      {% if pagination.href.next %}<a href="{{ pagination.href.next }}" class="bg-gray-900 text-gray-200 hover:text-red-700 no-underline py-2 px-3 rounded">Older</a>{%else%}<span></span>{%endif%}
+    </div>
+    {# <nav aria-labelledby="my-pagination">
+      <h2 id="my-pagination">This is my Pagination</h2>
+      <ol>
+        <li>{% if page.url != pagination.href.first %}<a href="{{ pagination.href.first }}">First</a>{% else %}First{% endif %}</li>
+        <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
+    {%- for pageEntry in pagination.pages %}
+        <li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>Page {{ loop.index }}</a></li>
+    {%- endfor %}
+        <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
+        <li>{% if page.url != pagination.href.last %}<a href="{{ pagination.href.last }}">Last</a>{% else %}Last{% endif %}</li>
+      </ol>
+    </nav> #}
+  </section>
+
+  <aside class="w-full mt-6 md:mt-0 md:w-2/6 border-gray-200 flex flex-col items-center px-3 relative">
+    {# <div class="w-full bg-white shadow flex flex-col my-4 p-6"> #}
+    {# <div class="bg-white flex flex-col px-6 pb-10">
+      <p class="font-serif font-bold text-xl mb-6 uppercase">Latest review:</p>
+      <div class="max-w-sm rounded overflow-hidden shadow hover:shadow-md">
+        <a href="#" class="hover:text-red-700">
+          <img class="w-full" src="/images/books/nizan-les-chiens-de-garde/nizan-les-chiens-de-garde.jpg" alt="book cover">
+        </a>
+      </div>
+    </div> #}
+
+    {% include "sidebar.njk" %}
+
+  </aside>
+</div>
+
