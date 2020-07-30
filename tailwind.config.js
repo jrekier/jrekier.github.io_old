@@ -6,6 +6,8 @@ module.exports = {
       './src/**/*.js',
       './src/**/*.11ty.js',
       './src/**/*.njk',
+      './src/**/*.md',
+      './src/**/*.html',
     ],
   },
   theme: {
