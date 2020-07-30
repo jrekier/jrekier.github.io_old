@@ -3,6 +3,7 @@
 
 /* purgecss start ignore */
 @tailwind base;
+/* purgecss end ignore */
 
 /* Markdown Styles */
 /* Global */
@@ -139,8 +140,8 @@ tt {
 /* fix katex fraction bars: https://github.com/KaTeX/KaTeX/issues/2236 */
 *, ::after, ::before { border-color: #000 }
 
-/* purgecss end ignore */
-
+/* purgecss start ignore */
 @tailwind components;
+/* purgecss end ignore */
 
 @tailwind utilities;
