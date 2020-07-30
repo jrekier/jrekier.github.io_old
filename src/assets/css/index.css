@@ -1,6 +1,3 @@
-/* @import 'nav.css'; */
-/* @import 'prismjs.css'; */
-
 /* purgecss start ignore */
 @tailwind base;
 /* purgecss end ignore */
@@ -140,8 +137,8 @@ tt {
 /* fix katex fraction bars: https://github.com/KaTeX/KaTeX/issues/2236 */
 *, ::after, ::before { border-color: #000 }
 
-/* purgecss start ignore */
+
 @tailwind components;
-/* purgecss end ignore */
+
 
 @tailwind utilities;

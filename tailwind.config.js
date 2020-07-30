@@ -5,6 +5,7 @@ module.exports = {
     content: [
       './src/**/*.js',
       './src/**/*.11ty.js',
+      './src/**/*.njk',
     ],
   },
   theme: {
