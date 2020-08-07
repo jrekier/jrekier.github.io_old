@@ -1,11 +1,6 @@
 ---
 title: Home
 layout: layouts/base.njk
-pagination:
-  data: collections.posts
-  size: 5
-  alias: posts
-permalink: "{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus: 1 }}{% endif %}/index.html"
 ---
 
 {# Logo title and navigation #}
@@ -34,11 +29,9 @@ permalink: "{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus
   <section class="w-full md:w-4/6 body-font overflow-hidden flex flex-col px-3 relative">
     <div class="container px-5 mx-auto">
         <p class="font-serif font-bold text-xl border-b border-gray-500 mb-4 uppercase">Latest Blog Posts</p>
-        {# <p class="font-serif font-bold text-xl mb-6 uppercase">Latest articles:</p> #}
-        {%- for post in posts -%}
+        {%- for post in collections.posts.slice(0,5) -%}
           <article class="mb-8">
             <a href="{{ post.url }}">           
-              {# <div class="mb-4 pb-2 text-black rounded-lg group hover:bg-gray-100"> #}
               <div class="mb-4 pb-2 text-black rounded-lg group">
                 {# <!-- Image -->
                 {% if post.data.featured_image %}
@@ -68,38 +61,15 @@ permalink: "{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus
           </article>
         {%- endfor -%}
     </div>
-    {# <div class="flex justify-between text-xs">
-      {% if pagination.href.previous %}<a href="{{ pagination.href.previous }}"><span class="bg-black text-white no-underline py-2 px-3 rounded">Previous</span></a>{%else%}<span class="bg-black text-white no-underline py-2 px-3 rounded">Previous</span>{%endif%}
-      {% if pagination.href.next %}<a href="{{ pagination.href.next }}"><span class="bg-black text-white no-underline py-2 px-3 rounded">Next</span></a>{%else%}<span class="bg-black text-white no-underline py-2 px-3 rounded">Next</span>{%endif%}
-    </div> #}
-    <div class="flex items-sart justify-between text-xs">
-      {% if pagination.href.previous %}<a href="{{ pagination.href.previous }}" class="bg-gray-900 text-gray-200 hover:text-red-700 no-underline py-2 px-3 rounded">Newer</a>{%else%}<span></span>{%endif%}
-      {% if pagination.href.next %}<a href="{{ pagination.href.next }}" class="bg-gray-900 text-gray-200 hover:text-red-700 no-underline py-2 px-3 rounded">Older</a>{%else%}<span></span>{%endif%}
-    </div>
-    {# <nav aria-labelledby="my-pagination">
-      <h2 id="my-pagination">This is my Pagination</h2>
-      <ol>
-        <li>{% if page.url != pagination.href.first %}<a href="{{ pagination.href.first }}">First</a>{% else %}First{% endif %}</li>
-        <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
-    {%- for pageEntry in pagination.pages %}
-        <li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>Page {{ loop.index }}</a></li>
-    {%- endfor %}
-        <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
-        <li>{% if page.url != pagination.href.last %}<a href="{{ pagination.href.last }}">Last</a>{% else %}Last{% endif %}</li>
-      </ol>
-    </nav> #}
+      <a href="/blog/" class="inline-flex justify-end items-center hover:text-red-700">
+        <p>See All posts</p>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
   </section>
 
   <aside class="w-full mt-6 md:mt-0 md:w-2/6 border-gray-200 flex flex-col items-center px-3 relative">
-    {# <div class="w-full bg-white shadow flex flex-col my-4 p-6"> #}
-    {# <div class="bg-white flex flex-col px-6 pb-10">
-      <p class="font-serif font-bold text-xl mb-6 uppercase">Latest review:</p>
-      <div class="max-w-sm rounded overflow-hidden shadow hover:shadow-md">
-        <a href="#" class="hover:text-red-700">
-          <img class="w-full" src="/images/books/nizan-les-chiens-de-garde/nizan-les-chiens-de-garde.jpg" alt="book cover">
-        </a>
-      </div>
-    </div> #}
 
     {% include "sidebar.njk" %}
 
