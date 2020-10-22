@@ -87,7 +87,7 @@
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-katex": "^2.0.3",
     "md5": "^2.2.1",
-    "netlify-cli": "^2.59.0",
+    "netlify-cli": "^2.59.3",
     "node-dir": "^0.1.17",
     "postcss-clean": "^1.1.0",
     "postcss-import": "^12.0.1",
