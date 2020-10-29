@@ -2,6 +2,6 @@
 var navbar = new Vue({
     el: '#navbar',
     data: {
-        isOpen: false
+        isOpen: false,
     }
 })
