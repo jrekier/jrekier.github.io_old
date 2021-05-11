@@ -52,7 +52,7 @@
     "glob": "^7.1.6",
     "glob-all": "^3.2.1",
     "inline-source-map": "^0.6.2",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "luxon": "^1.25.0",
     "markdown-it": "^10.0.0",
     "markdown-it-attrs": "^3.0.3",
